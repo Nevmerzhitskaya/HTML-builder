@@ -3,6 +3,7 @@ const { createReadStream } = require('node:fs');
 const { createWriteStream } = require('node:fs');
 
 const path = require('path');
+const pathFolder = path.join('06-build-page', 'project-dist');
 const pathCssSource = path.join('06-build-page', 'styles');
 const pathCssCopy = path.join('06-build-page', 'project-dist', 'style.css');
 const pathComponents = path.join('06-build-page', 'components');
@@ -127,7 +128,7 @@ const createHtml = async (pathHtmlSource, pathHtmlCopy) => {
 }
 
 const buildPage = async () => {
-
+  makeDirectory(pathFolder);
   copyDirectory(pathSource, pathCopy);
   mergeCssFiles(pathCssSource, pathCssCopy);
   createHtml(pathHtmlSource, pathHtmlCopy);
